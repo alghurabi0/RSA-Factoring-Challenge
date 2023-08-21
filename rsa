@@ -1,0 +1,22 @@
+#!/usr/bin/python3
+import sys
+import sympy
+
+def factorize_rsa_number(n):
+    factors = sympy.factorint(n)
+    prime_factors = sorted(factors.keys())
+    p, q = prime_factors[0], prime_factors[1]
+    return p, q
+
+def main():
+    if len(sys.argv) != 2:
+        print("Usage: rsa <number>")
+        sys.exit(1)
+
+    n = int(sys.argv[1])
+
+    p, q = factorize_rsa_number(n)
+    print(f"{n}={p}*{q}")
+
+if __name__ == "__main__":
+    main()
